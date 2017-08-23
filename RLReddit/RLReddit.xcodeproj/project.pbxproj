@@ -15,6 +15,8 @@
 		002735B81F41DAC100B1DBFA /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 002735B61F41DAC100B1DBFA /* Info.plist */; };
 		002735BB1F41DB0400B1DBFA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002735BA1F41DB0400B1DBFA /* ViewController.swift */; };
 		002735BD1F41DD2200B1DBFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002735BC1F41DD2200B1DBFA /* AppDelegate.swift */; };
+		005F29171F446C8000557C35 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F29161F446C8000557C35 /* RequestManager.swift */; };
+		005F29191F44A8E500557C35 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F29181F44A8E500557C35 /* Request.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		002735B61F41DAC100B1DBFA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		002735BA1F41DB0400B1DBFA /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		002735BC1F41DD2200B1DBFA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Classes/AppDelegate.swift; sourceTree = "<group>"; };
+		005F29161F446C8000557C35 /* RequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
+		005F29181F44A8E500557C35 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +168,8 @@
 		002735A61F41DA5E00B1DBFA /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				005F29161F446C8000557C35 /* RequestManager.swift */,
+				005F29181F44A8E500557C35 /* Request.swift */,
 			);
 			name = Networking;
 			path = Classes/Networking;
@@ -315,6 +321,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				005F29171F446C8000557C35 /* RequestManager.swift in Sources */,
+				005F29191F44A8E500557C35 /* Request.swift in Sources */,
 				002735BD1F41DD2200B1DBFA /* AppDelegate.swift in Sources */,
 				002735BB1F41DB0400B1DBFA /* ViewController.swift in Sources */,
 			);
@@ -568,6 +576,7 @@
 				002735991F41C92700B1DBFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0027359A1F41C92700B1DBFA /* Build configuration list for PBXNativeTarget "RLRedditTests" */ = {
 			isa = XCConfigurationList;
@@ -576,6 +585,7 @@
 				0027359C1F41C92700B1DBFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0027359D1F41C92700B1DBFA /* Build configuration list for PBXNativeTarget "RLRedditUITests" */ = {
 			isa = XCConfigurationList;
@@ -584,6 +594,7 @@
 				0027359F1F41C92700B1DBFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
