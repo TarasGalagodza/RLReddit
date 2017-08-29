@@ -18,7 +18,7 @@ enum NetworkError: Error {
 }
 
 class Request {
-    private static let baseURL = "https://www.reddit.com/"
+    static let baseURL = "https://www.reddit.com/"
     private var url : URL
     private var dataTask : URLSessionDataTask?
     var successBlock : PCRequestSuccessBlock?

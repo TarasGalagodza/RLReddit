@@ -17,6 +17,7 @@
 		002735BD1F41DD2200B1DBFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002735BC1F41DD2200B1DBFA /* AppDelegate.swift */; };
 		005F29171F446C8000557C35 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F29161F446C8000557C35 /* RequestManager.swift */; };
 		005F29191F44A8E500557C35 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F29181F44A8E500557C35 /* Request.swift */; };
+		006A47081F5590DB00E1213C /* TopArticlesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006A47071F5590DB00E1213C /* TopArticlesRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		002735BC1F41DD2200B1DBFA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Classes/AppDelegate.swift; sourceTree = "<group>"; };
 		005F29161F446C8000557C35 /* RequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		005F29181F44A8E500557C35 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		006A47071F5590DB00E1213C /* TopArticlesRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopArticlesRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 			children = (
 				005F29161F446C8000557C35 /* RequestManager.swift */,
 				005F29181F44A8E500557C35 /* Request.swift */,
+				006A47071F5590DB00E1213C /* TopArticlesRequest.swift */,
 			);
 			name = Networking;
 			path = Classes/Networking;
@@ -325,6 +328,7 @@
 				005F29191F44A8E500557C35 /* Request.swift in Sources */,
 				002735BD1F41DD2200B1DBFA /* AppDelegate.swift in Sources */,
 				002735BB1F41DB0400B1DBFA /* ViewController.swift in Sources */,
+				006A47081F5590DB00E1213C /* TopArticlesRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
