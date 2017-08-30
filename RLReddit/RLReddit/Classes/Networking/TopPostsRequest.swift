@@ -8,10 +8,10 @@
 
 import UIKit
 
-class TopArticlesRequest: Request {
-    private static let maxArticlesPerPage = 50
+class TopPostsRequest: Request {
+    private static let maxPostsPerPage = 50
 
-    init(after: Int = 0, count: Int = maxArticlesPerPage, limit: Int = maxArticlesPerPage) {
+    init(after: Int = 0, count: Int = maxPostsPerPage, limit: Int = maxPostsPerPage) {
         var url: URL? = nil
         if var urlComponents = URLComponents(string:(Request.baseURL + "/top.json")) {
             var items = [URLQueryItem]()
@@ -21,7 +21,7 @@ class TopArticlesRequest: Request {
             urlComponents.queryItems = items
             url = urlComponents.url
         } else {
-            assertionFailure("failed to create top artcles URL")
+            assertionFailure("failed to create top post URL")
         }
 
         super.init(url: url!)
