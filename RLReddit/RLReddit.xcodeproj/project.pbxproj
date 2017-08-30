@@ -21,7 +21,6 @@
 		006A470A1F55B5FF00E1213C /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006A47091F55B5FF00E1213C /* Post.swift */; };
 		006A470D1F55CD6F00E1213C /* JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006A470C1F55CD6F00E1213C /* JSONDecodable.swift */; };
 		009724361F56F6AE00B13101 /* PostsListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009724351F56F6AE00B13101 /* PostsListing.swift */; };
-		009724381F56F80A00B13101 /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009724371F56F80A00B13101 /* Listing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +60,6 @@
 		006A47091F55B5FF00E1213C /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		006A470C1F55CD6F00E1213C /* JSONDecodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDecodable.swift; sourceTree = "<group>"; };
 		009724351F56F6AE00B13101 /* PostsListing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsListing.swift; sourceTree = "<group>"; };
-		009724371F56F80A00B13101 /* Listing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Listing.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,7 +201,6 @@
 			isa = PBXGroup;
 			children = (
 				006A470C1F55CD6F00E1213C /* JSONDecodable.swift */,
-				009724371F56F80A00B13101 /* Listing.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -345,7 +342,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				005F29171F446C8000557C35 /* RequestManager.swift in Sources */,
-				009724381F56F80A00B13101 /* Listing.swift in Sources */,
 				005F29191F44A8E500557C35 /* Request.swift in Sources */,
 				002735BD1F41DD2200B1DBFA /* AppDelegate.swift in Sources */,
 				006A470A1F55B5FF00E1213C /* Post.swift in Sources */,
