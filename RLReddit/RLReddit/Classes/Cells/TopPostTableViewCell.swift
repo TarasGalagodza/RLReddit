@@ -11,10 +11,16 @@ import UIKit
 class TopPostTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var commentsCountLabel: UILabel!
+    @IBOutlet weak var createdUtcLabel: UILabel!
+    @IBOutlet weak var thumbnailImageView: UIImageView!
+
     var post: Post? {
         didSet {
             if let post = post {
                 titleLabel.text = post.title;
+                authorLabel.text = post.author;
             }
         }
     }
