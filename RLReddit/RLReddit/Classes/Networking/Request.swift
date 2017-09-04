@@ -8,8 +8,8 @@
 
 import UIKit
 
-typealias PCRequestFailureBlock = (NetworkError?)-> Void
-typealias PCRequestSuccessBlock = (Any?)-> Void
+typealias RequestFailureBlock = (NetworkError?)-> Void
+typealias RequestSuccessBlock = (Any?)-> Void
 
 enum NetworkError: Error {
     case systemError
@@ -17,12 +17,12 @@ enum NetworkError: Error {
     case failedToParseResponse
 }
 
-class Request {
+class Request: Equatable {
     static let baseURL = "https://www.reddit.com/"
     private var url : URL
     private var dataTask : URLSessionDataTask?
-    var successBlock : PCRequestSuccessBlock?
-    var failureBlock : PCRequestFailureBlock?
+    var successBlock : RequestSuccessBlock?
+    var failureBlock : RequestFailureBlock?
     
     init(url: URL){
         self.url = url
@@ -82,5 +82,10 @@ class Request {
 
     func parse(json: Any) -> Any? {
         return nil;
+    }
+    
+    static func == (lhs: Request, rhs: Request) -> Bool {
+        return
+            lhs.url == rhs.url
     }
 }
