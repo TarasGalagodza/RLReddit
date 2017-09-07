@@ -10,6 +10,8 @@ import UIKit
 
 class TopPostTableViewCell: UITableViewCell {
 
+    private static let dateFormatter = DateComponentsFormatter()
+
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var commentsCountLabel: UILabel!
@@ -18,22 +20,27 @@ class TopPostTableViewCell: UITableViewCell {
 
     var post: Post? {
         didSet {
+            thumbnailImageView?.image = UIImage.init(imageLiteralResourceName: "no-pictures-available_icon")
             if let post = post {
                 titleLabel.text = post.title;
                 authorLabel.text = post.author;
+                thumbnailImageView.downloadedFrom(link: post.thumbnailPath);
+                commentsCountLabel.text = "Comments: \(post.commentsCount)"
+                let date = Date(timeIntervalSince1970: TimeInterval(post.createdUtc))
+                if let string = TopPostTableViewCell.dateFormatter.string(from: date, to: Date()) {
+                    createdUtcLabel.text = string + " ago"
+                }
+                else {
+                    createdUtcLabel.text = ""
+                }
             }
         }
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        TopPostTableViewCell.dateFormatter.maximumUnitCount = 1
+        TopPostTableViewCell.dateFormatter.unitsStyle = .full
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

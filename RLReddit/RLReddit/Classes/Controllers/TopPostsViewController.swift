@@ -18,7 +18,7 @@ class TopPostsViewController: UIViewController {
     private lazy var postsCountToLoad: Int = {
         return Int(self.tableView!.frame.height / 100); // multiplying posts fitted in page by 2, to preload them
         }()
-    var isLoadingInProgress: Bool = false {
+    private var isLoadingInProgress: Bool = false {
         didSet {
             UIApplication.shared.isNetworkActivityIndicatorVisible = isLoadingInProgress
         }
@@ -37,7 +37,7 @@ class TopPostsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if listing.entities.isEmpty {
-            loadMorePosts(reloadList: false)
+            loadMorePosts()
         }
     }
     
@@ -45,7 +45,7 @@ class TopPostsViewController: UIViewController {
         loadMorePosts(reloadList: true, completion: {refreshControl.endRefreshing()});
     }
 
-    private func loadMorePosts(reloadList: Bool, completion: @escaping() -> Void = {}) {
+    fileprivate func loadMorePosts(reloadList: Bool = false, completion: @escaping() -> Void = {}) {
         guard !isLoadingInProgress else {
             return;
         }
