@@ -16,7 +16,7 @@ class TopPostsViewController: UIViewController {
 
     fileprivate var listing: PostsListing = PostsListing(entities:[Post](), before:"", after:"")
     private lazy var postsCountToLoad: Int = {
-        return Int(self.tableView!.frame.height / 100); // multiplying posts fitted in page by 2, to preload them
+        return Int(self.tableView!.frame.height / 100) * 2; // multiplying posts fitted in page by 2, to preload them
         }()
     private var isLoadingInProgress: Bool = false {
         didSet {
@@ -83,3 +83,18 @@ extension TopPostsViewController: UITableViewDataSource {
         return cell
     }
 }
+
+extension TopPostsViewController {
+    override func encodeRestorableState(with coder: NSCoder) {
+        coder.encode(listing, forKey: "listing")
+        super.encodeRestorableState(with: coder)
+    }
+    
+    override func decodeRestorableState(with coder: NSCoder) {
+        if let listing = coder.decodeObject(forKey: "listing") as? PostsListing {
+            self.listing = listing
+        }
+        super.decodeRestorableState(with: coder)
+    }
+}
+
