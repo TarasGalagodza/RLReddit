@@ -21,7 +21,7 @@ class TopPostTableViewCell: UITableViewCell {
 
     var post: Post? {
         didSet {
-            thumbnailImageView?.image = UIImage.init(imageLiteralResourceName: "no-pictures-available_icon")
+            thumbnailImageView?.image = UIImage.init(named: "no-pictures-available_icon")
             if let post = post {
                 titleLabel.text = post.title;
                 authorLabel.text = post.author;

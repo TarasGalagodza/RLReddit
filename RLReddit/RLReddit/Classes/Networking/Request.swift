@@ -34,7 +34,7 @@ class Request: Equatable {
         }
     }
     
-    func sendRequestWithSession(session: URLSession) {
+    func sendRequestWith(session: URLSession) {
 
         let request = URLRequest(url: url)
         dataTask = session.dataTask(with: request) { [weak self] data, response, error in
@@ -81,7 +81,7 @@ class Request: Equatable {
     }
 
     func parse(json: Any) -> Any? {
-        return nil;
+        return nil
     }
     
     static func == (lhs: Request, rhs: Request) -> Bool {

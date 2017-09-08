@@ -12,7 +12,7 @@ class TopPostsRequest: Request {
     private static let maxPostsPerPage = 50
 
     init(after: String = "", count: Int = maxPostsPerPage, limit: Int = maxPostsPerPage) {
-        var url: URL? = nil
+        var url: URL?
         if var urlComponents = URLComponents(string:(Request.baseURL + "/top.json")) {
             var items = [URLQueryItem]()
             items.append(URLQueryItem(name: "count", value: String(count)))

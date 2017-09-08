@@ -28,11 +28,10 @@ class TopPostsViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
-            if (identifier == "TopPostsToFullSizeImageSegue") {
-                if let indexPath = sender as? IndexPath {
+            if (identifier == "TopPostsToFullSizeImageSegue"),
+                let indexPath = sender as? IndexPath {
                     let imageViewController = segue.destination as! FullSizeImageViewController
                     imageViewController.imageLink = listing.entities[indexPath.row].fullSizeImagePath
-                }
             }
         }
     }

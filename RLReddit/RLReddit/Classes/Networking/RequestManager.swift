@@ -31,6 +31,6 @@ class RequestManager {
                 self?.requests.remove(at: index)
             }
         }
-        request.sendRequestWithSession(session: session)
+        request.sendRequestWith(session: session)
     }
 }
