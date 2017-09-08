@@ -22,15 +22,35 @@ class RLRedditTests: XCTestCase {
     }
     
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+        do {
+            if let file = Bundle.main.url(forResource: "sample", withExtension: "json")
+            {
+                let data = try Data(contentsOf: file)
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+
+                let listing = PostsListing.decode(json: json)
+                XCTAssertNotNil(listing)
+                XCTAssertEqual(listing?.before, "")
+                XCTAssertEqual(listing?.after, "t3_5ds8h3")
+                XCTAssertEqual(listing?.entities.count, 25)
+                
+                if let firstPost = listing?.entities.first {
+                    XCTAssertEqual(firstPost.title, "Guardians of the Front Page")
+                    XCTAssertEqual(firstPost.author, "iH8myPP" )
+                    XCTAssertEqual(firstPost.commentsCount, 5041)
+                    XCTAssertEqual(firstPost.thumbnailPath, "https://b.thumbs.redditmedia.com/yeLMMXr9vghtaz26xZ1A_PCg-vk4_KjtnHNlQ-NzkxA.jpg")
+                    XCTAssertEqual(firstPost.fullSizeImagePath, "http://i.imgur.com/OOFRJvr.gifv")
+                    XCTAssertEqual(firstPost.createdUtc, 1480959674)
+                    
+                } else {
+                    XCTFail()
+                }
+            } else {
+                XCTFail()
+            }
+        } catch {
+            print(error.localizedDescription)
+            XCTFail()
         }
     }
-    
 }
