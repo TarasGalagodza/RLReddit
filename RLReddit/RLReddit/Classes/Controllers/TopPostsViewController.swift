@@ -13,7 +13,7 @@ class TopPostsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
 
-    static let estimatedRowHeight = 100
+    static let estimatedRowHeight: CGFloat = 124
     static let maxPostsCount = 50
 
     fileprivate var listing: PostsListing = PostsListing(entities:[Post](), before:"", after:"")
@@ -44,7 +44,7 @@ class TopPostsViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(TopPostsViewController.reloadPosts(_:)), for: UIControlEvents.valueChanged)
         tableView.addSubview(refreshControl)
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = CGFloat(TopPostsViewController.estimatedRowHeight)
+        tableView.estimatedRowHeight = TopPostsViewController.estimatedRowHeight
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -67,20 +67,33 @@ class TopPostsViewController: UIViewController {
         let after = reloadList ? "" : listing.after
         let request = TopPostsRequest(after: after, count: postsCountToLoad, limit: postsCountToLoad)
         RequestManager.sharedInstance.sendRequest(request: request, completionHandler: {[weak self] loadedListing, error in
-            if (reloadList) {
-                self?.listing = PostsListing(entities:[Post](), before:"", after:"")
+            
+            self?.isLoadingInProgress = false
+            if let error = error {
+                self?.showNetworkError(error);
             }
+            else {
+                if (reloadList) {
+                    self?.listing = PostsListing(entities:[Post](), before:"", after:"")
+                }
 
-            if let loadedListing = loadedListing as? PostsListing,
-               let listing = self?.listing {
-                self?.listing = listing + loadedListing
-                self?.tableView.reloadData()
-                self?.isLoadingInProgress = false
-                completion();
+                if let loadedListing = loadedListing as? PostsListing,
+                   let listing = self?.listing {
+                    self?.listing = listing + loadedListing
+                    self?.tableView.reloadData()
+                    completion();
+                }
             }
         });
     }
 
+    fileprivate func showNetworkError(_: NetworkError) {
+        let alertController = UIAlertController(title: NSLocalizedString("NetworkError", comment: ""), message: "", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Retry", comment: ""), style: .default) { [weak self] _ in
+            self?.loadMorePosts()
+        })
+        present(alertController, animated: true)
+    }
 }
 
 extension TopPostsViewController: UITableViewDataSource {
