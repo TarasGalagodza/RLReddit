@@ -11,8 +11,10 @@ import UIKit
 class TopPostsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+
     static let estimatedRowHeight = 100
+    static let maxPostsCount = 50
 
     fileprivate var listing: PostsListing = PostsListing(entities:[Post](), before:"", after:"")
     private lazy var postsCountToLoad: Int = {
@@ -25,7 +27,6 @@ class TopPostsViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if let identifier = segue.identifier {
             if (identifier == "TopPostsToFullSizeImageSegue") {
                 if let indexPath = sender as? IndexPath {
@@ -66,14 +67,12 @@ class TopPostsViewController: UIViewController {
         let after = reloadList ? "" : listing.after
         let request = TopPostsRequest(after: after, count: postsCountToLoad, limit: postsCountToLoad)
         RequestManager.sharedInstance.sendRequest(request: request, completionHandler: {[weak self] loadedListing, error in
-            if (reloadList)
-            {
+            if (reloadList) {
                 self?.listing = PostsListing(entities:[Post](), before:"", after:"")
             }
 
             if let loadedListing = loadedListing as? PostsListing,
-               let listing = self?.listing
-            {
+               let listing = self?.listing {
                 self?.listing = listing + loadedListing
                 self?.tableView.reloadData()
                 self?.isLoadingInProgress = false
@@ -86,7 +85,7 @@ class TopPostsViewController: UIViewController {
 
 extension TopPostsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listing.entities.count
+        return min(listing.entities.count, TopPostsViewController.maxPostsCount)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -94,6 +93,14 @@ extension TopPostsViewController: UITableViewDataSource {
         cell.post = listing.entities[indexPath.row]
         cell.showFullSizeImageHandler = {[weak self] in
             self?.performSegue(withIdentifier: "TopPostsToFullSizeImageSegue", sender: indexPath)
+        }
+        
+        if (indexPath.row == listing.entities.count - 1 && listing.entities.count < TopPostsViewController.maxPostsCount) {
+            activityIndicatorView.isHidden = false
+            activityIndicatorView.startAnimating()
+            loadMorePosts(reloadList: false, completion: { [weak self] in
+                self?.activityIndicatorView.stopAnimating()
+            });
         }
         return cell
     }

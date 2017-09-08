@@ -41,6 +41,20 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="124" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uqp-yu-tfj">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="HKn-1T-3V3">
+                                    <rect key="frame" x="0.0" y="152" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="wAT-zz-ETH">
+                                            <rect key="frame" x="177" y="12" width="20" height="20"/>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="wAT-zz-ETH" firstAttribute="centerX" secondItem="HKn-1T-3V3" secondAttribute="centerX" id="rlp-vQ-XTK"/>
+                                        <constraint firstItem="wAT-zz-ETH" firstAttribute="centerY" secondItem="HKn-1T-3V3" secondAttribute="centerY" id="yAs-fo-by7"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TopPostTableViewCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="TopPostTableViewCell" rowHeight="124" id="7U0-JQ-qu7" customClass="TopPostTableViewCell" customModule="RLReddit" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="124"/>
@@ -128,7 +142,7 @@
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="6qo-fD-mhV" id="u7d-TJ-H6M"/>
-                                    <outlet property="delegate" destination="6qo-fD-mhV" id="nj5-lj-57G"/>
+                                    <outlet property="delegate" destination="6qo-fD-mhV" id="xCT-Rl-X68"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -140,8 +154,9 @@
                             <constraint firstItem="uqp-yu-tfj" firstAttribute="leading" secondItem="EyL-hg-iOp" secondAttribute="leading" id="iUN-aZ-iPA"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Top posts" id="rYp-aV-WC8"/>
+                    <navigationItem key="navigationItem" title="Top 50 posts on Reddit" id="rYp-aV-WC8"/>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="wAT-zz-ETH" id="ba3-hO-dnq"/>
                         <outlet property="tableView" destination="uqp-yu-tfj" id="5mr-wU-Unp"/>
                         <segue destination="eek-17-DaO" kind="show" identifier="TopPostsToFullSizeImageSegue" id="pyJ-Gh-Pm9"/>
                     </connections>
@@ -153,7 +168,7 @@
         <!--Full image-->
         <scene sceneID="YTR-tT-hsD">
             <objects>
-                <viewController title="Full image" id="eek-17-DaO" customClass="FullSizeImageViewController" customModule="RLReddit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="FullSizeImageViewController" storyboardIdentifier="FullSizeImageViewController" title="Full image" id="eek-17-DaO" customClass="FullSizeImageViewController" customModule="RLReddit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9f3-m7-hpf"/>
                         <viewControllerLayoutGuide type="bottom" id="tVM-o4-B5e"/>
