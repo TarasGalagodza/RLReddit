@@ -15,6 +15,7 @@
 		002735B81F41DAC100B1DBFA /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 002735B61F41DAC100B1DBFA /* Info.plist */; };
 		002735BB1F41DB0400B1DBFA /* TopPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002735BA1F41DB0400B1DBFA /* TopPostsViewController.swift */; };
 		002735BD1F41DD2200B1DBFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002735BC1F41DD2200B1DBFA /* AppDelegate.swift */; };
+		005D904E1F62A78E006B5027 /* FullSizeImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005D904D1F62A78E006B5027 /* FullSizeImageViewController.swift */; };
 		005F29171F446C8000557C35 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F29161F446C8000557C35 /* RequestManager.swift */; };
 		005F29191F44A8E500557C35 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F29181F44A8E500557C35 /* Request.swift */; };
 		005F7EA31F61A56400D5E231 /* TopPostTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F7EA21F61A56400D5E231 /* TopPostTableViewFooter.swift */; };
@@ -58,6 +59,7 @@
 		002735B61F41DAC100B1DBFA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		002735BA1F41DB0400B1DBFA /* TopPostsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopPostsViewController.swift; sourceTree = "<group>"; };
 		002735BC1F41DD2200B1DBFA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Classes/AppDelegate.swift; sourceTree = "<group>"; };
+		005D904D1F62A78E006B5027 /* FullSizeImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullSizeImageViewController.swift; sourceTree = "<group>"; };
 		005F29161F446C8000557C35 /* RequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		005F29181F44A8E500557C35 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		005F7EA21F61A56400D5E231 /* TopPostTableViewFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopPostTableViewFooter.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				002735BA1F41DB0400B1DBFA /* TopPostsViewController.swift */,
+				005D904D1F62A78E006B5027 /* FullSizeImageViewController.swift */,
 			);
 			name = Controllers;
 			path = Classes/Controllers;
@@ -380,6 +383,7 @@
 				006A470A1F55B5FF00E1213C /* Post.swift in Sources */,
 				006A470D1F55CD6F00E1213C /* JSONDecodable.swift in Sources */,
 				005F7EA31F61A56400D5E231 /* TopPostTableViewFooter.swift in Sources */,
+				005D904E1F62A78E006B5027 /* FullSizeImageViewController.swift in Sources */,
 				002735BB1F41DB0400B1DBFA /* TopPostsViewController.swift in Sources */,
 				006A47081F5590DB00E1213C /* TopPostsRequest.swift in Sources */,
 				009724361F56F6AE00B13101 /* PostsListing.swift in Sources */,

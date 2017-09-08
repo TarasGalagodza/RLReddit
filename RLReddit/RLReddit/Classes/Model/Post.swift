@@ -17,6 +17,12 @@ class Post: NSObject, NSCoding {
     let fullSizeImagePath: String
     let commentsCount: Int
     
+    var hasFullSizeImageLink: Bool {
+        // support only images
+        return !fullSizeImagePath.isEmpty && (fullSizeImagePath.hasSuffix(".png") || fullSizeImagePath.hasSuffix(".jpg"))
+    }
+
+    
     init(title: String, author: String, createdUtc: Int, thumbnailPath: String, fullSizeImagePath: String, commentsCount: Int) {
         self.title = title
         self.author = author

@@ -24,6 +24,18 @@ class TopPostsViewController: UIViewController {
         }
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let identifier = segue.identifier {
+            if (identifier == "TopPostsToFullSizeImageSegue") {
+                if let indexPath = sender as? IndexPath {
+                    let imageViewController = segue.destination as! FullSizeImageViewController
+                    imageViewController.imageLink = listing.entities[indexPath.row].fullSizeImagePath
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -80,6 +92,9 @@ extension TopPostsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TopPostTableViewCell", for: indexPath) as! TopPostTableViewCell
         cell.post = listing.entities[indexPath.row]
+        cell.showFullSizeImageHandler = {[weak self] in
+            self?.performSegue(withIdentifier: "TopPostsToFullSizeImageSegue", sender: indexPath)
+        }
         return cell
     }
 }

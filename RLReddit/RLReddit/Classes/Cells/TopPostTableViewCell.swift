@@ -17,6 +17,7 @@ class TopPostTableViewCell: UITableViewCell {
     @IBOutlet weak var commentsCountLabel: UILabel!
     @IBOutlet weak var createdUtcLabel: UILabel!
     @IBOutlet weak var thumbnailImageView: UIImageView!
+    @IBOutlet weak var showFullImageButton: UIButton!
 
     var post: Post? {
         didSet {
@@ -33,14 +34,28 @@ class TopPostTableViewCell: UITableViewCell {
                 else {
                     createdUtcLabel.text = ""
                 }
+                showFullImageButton.isHidden = !post.hasFullSizeImageLink
             }
         }
     }
+    var showFullSizeImageHandler : (()-> Void)?
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
         
         TopPostTableViewCell.dateFormatter.maximumUnitCount = 1
         TopPostTableViewCell.dateFormatter.unitsStyle = .full
+    }
+    
+    override func prepareForReuse() {
+        thumbnailImageView?.image = UIImage.init(imageLiteralResourceName: "no-pictures-available_icon")
+        showFullImageButton.isHidden = true
+    }
+    
+    @IBAction func showFullSizeImage(sender: AnyObject) {
+        if let showFullSizeImageHandler = showFullSizeImageHandler {
+            showFullSizeImageHandler()
+        }
     }
 }
